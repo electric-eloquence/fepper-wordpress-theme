@@ -47,11 +47,16 @@ while ( have_posts() ) : the_post();
 		<div class="l-two-col">
 			<div class="l-main">
 				<section class="section latest-posts">
-					<h2 class="section-title">Latest Posts</h2>
+					<h2 class="section-title"><?php
+query_posts( 'cat=1' );
+global $wp_query;
+$post_count = $wp_query->found_posts;
+$post_counter = 0;
+echo _n('Latest Post', 'Latest Posts', $post_count, 'fepper');
+?></h2>
 					<ul class="post-list">
 						<?php
-query_posts( 'cat=1' );
-while ( have_posts() ) : the_post();
+while ( have_posts() && $post_counter < 5 ) : the_post();
 ?>
 							<li>
 								<div class="block block-thumb">
@@ -67,9 +72,14 @@ while ( have_posts() ) : the_post();
 </div>
 
 							</li>
-						<?php endwhile; ?>
+						<?php
+$post_counter++;
+endwhile;
+?>
 					</ul>
-					<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn">View more posts</a>
+					<?php if ( $post_count > 5 ) : ?>
+						<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn"><?php _e( 'View more posts', 'fepper' ); ?></a>
+					<?php endif; ?>
 				</section>
 			</div><!--end .l-main-->
 
