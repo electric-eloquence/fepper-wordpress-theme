@@ -68,8 +68,12 @@ echo _n('Latest Post', 'Latest Posts', $post_count_uncat, 'fepper'); ?></h2>
 							</li>
 						<?php endwhile; ?>
 					</ul>
-					<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn"><?php _e('View more posts', 'fepper'); ?></a>
-					</section>
+					<?php
+if ( get_page_by_path( blog ) ) :
+?>
+						<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn"><?php _e('View more posts', 'fepper'); ?></a>
+					<?php endif; ?>
+				</section>
 			</div><!--end .l-main-->
 
 			<div class="l-sidebar">
