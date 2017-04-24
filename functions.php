@@ -16,8 +16,8 @@
 // $breakpoints['bp_sm_min'] = 480;
 // $breakpoints['bp_xs_min'] = 0;
 $bp_ini = get_template_directory() . '/_scripts/src/variables.styl';
-if (file_exists($bp_ini)) {
-	$GLOBALS['breakpoints'] = parse_ini_file($bp_ini);
+if ( file_exists( $bp_ini ) ) {
+	$GLOBALS['breakpoints'] = parse_ini_file( $bp_ini );
 }
 
 if ( ! function_exists( 'fepper_setup' ) ) :

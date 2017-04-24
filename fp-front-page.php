@@ -2,15 +2,15 @@
 	<div role="main">
 		<section class="hero-and-insets">
 			<?php
-query_posts( 'cat=6' );
-$has_posts_cat6 = false;
+query_posts( 'category_name=hero' );
+global $wp_query;
+$post_count_hero = $wp_query->post_count;
 while ( have_posts() ) : the_post();
-	$has_posts_cat6 = true;
 ?>
 				<div class="block block-hero">
 	<a href="<?php the_permalink(); ?>" class="inner">
 		<div class="b-thumb">
-			<?php echo get_the_post_thumbnail( $post->ID, 'full' ); ?>
+			<?php echo get_the_post_thumbnail( $post, 'full' ); ?>
 		</div>
 		<div class="b-text">
 			<h2 class="headline"><?php the_title(); ?></h2>
@@ -21,15 +21,14 @@ while ( have_posts() ) : the_post();
 			<?php endwhile; ?>
 
 			<?php
-query_posts( 'cat=11' );
-$has_posts_cat11 = false;
+query_posts( 'category_name=tout' );
+$post_count_tout = $wp_query->post_count;
 while ( have_posts() ) : the_post();
-	$has_posts_cat11 = true;
 ?>
 				<div class="block block-inset">
 	<a href="<?php the_permalink(); ?>" class="inner">
 		<div class="b-thumb">
-			<?php echo get_the_post_thumbnail( $post->ID, 'full' ); ?>
+			<?php echo get_the_post_thumbnail( $post, 'full' ); ?>
 		</div>
 		<div class="b-text">
 			<h2 class="headline"><?php the_title(); ?></h2>
@@ -40,7 +39,7 @@ while ( have_posts() ) : the_post();
 			<?php endwhile; ?>
 		</section>
 
-		<?php if ( $has_posts_cat6 || $has_posts_cat11 ) : ?>
+		<?php if ( $post_count_hero || $post_count_tout ) : ?>
 			<hr />
 		<?php endif; ?>
 
@@ -48,22 +47,17 @@ while ( have_posts() ) : the_post();
 			<div class="l-main">
 				<section class="section latest-posts">
 					<h2 class="section-title"><?php
-query_posts( 'cat=1' );
-global $wp_query;
-$post_count = $wp_query->found_posts;
-$post_counter = 0;
-echo _n('Latest Post', 'Latest Posts', $post_count, 'fepper');
-?></h2>
+query_posts( 'category_name=uncategorized' );
+$post_count_uncat = $wp_query->post_count;
+echo _n('Latest Post', 'Latest Posts', $post_count_uncat, 'fepper'); ?></h2>
 					<ul class="post-list">
-						<?php
-while ( have_posts() && $post_counter < 5 ) : the_post();
-?>
+						<?php while ( have_posts() ) : the_post(); ?>
 							<li>
 								<div class="block block-thumb">
 	<a href="<?php the_permalink(); ?>" class="b-inner cf">
 		<h2 class="headline"><?php the_title(); ?></h2>
 		<div class="b-thumb">
-			<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
+			<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
 		</div>
 		<div class="b-text">
 			<?php the_excerpt(); ?>
@@ -72,15 +66,10 @@ while ( have_posts() && $post_counter < 5 ) : the_post();
 </div>
 
 							</li>
-						<?php
-$post_counter++;
-endwhile;
-?>
+						<?php endwhile; ?>
 					</ul>
-					<?php if ( $post_count > 5 ) : ?>
-						<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn"><?php _e( 'View more posts', 'fepper' ); ?></a>
-					<?php endif; ?>
-				</section>
+					<a href="<?php echo esc_url( home_url( 'blog' ) ); ?>" class="text-btn"><?php _e('View more posts', 'fepper'); ?></a>
+					</section>
 			</div><!--end .l-main-->
 
 			<div class="l-sidebar">
