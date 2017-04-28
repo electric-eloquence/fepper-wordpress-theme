@@ -2,7 +2,7 @@
 
 Contributors: Electric Eloquence
 Requires at least: WordPress 4.0
-Version: 0.0.0
+Version: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, post-formats, sticky-post, threaded-comments, blog
