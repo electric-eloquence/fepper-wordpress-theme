@@ -1,24 +1,10 @@
 <?php
 /**
- * Sets up the WordPress core custom header and custom background features.
+ * Sets up the WordPress core custom header features.
  */
-function fepper_custom_header_and_background() {
+function fepper_custom_header() {
 	$color_scheme             = fepper_get_color_scheme();
-	$default_background_color = trim( $color_scheme[0], '#' );
-	$default_text_color       = trim( $color_scheme[3], '#' );
-
-	/**
-	 * Filter the arguments used when adding 'custom-background' support.
-	 *
-	 * @param array $args {
-	 *     An array of custom-background support arguments.
-	 *
-	 *     @type string $default-color Default color of the background.
-	 * }
-	 */
-	add_theme_support( 'custom-background', apply_filters( 'fepper_custom_background_args', array(
-		'default-color' => $default_background_color,
-	) ) );
+	$default_text_color       = trim( $color_scheme[1], '#' );
 
 	/**
 	 * Filter the arguments used when adding 'custom-header' support.
@@ -37,11 +23,11 @@ function fepper_custom_header_and_background() {
 	add_theme_support( 'custom-header', apply_filters( 'fepper_custom_header_args', array(
 		'default-text-color'     => $default_text_color,
 		'width'                  => 1200,
-		'height'                 => 280,
+		'height'                 => 675,
 		'flex-height'            => true
 	) ) );
 }
-add_action( 'after_setup_theme', 'fepper_custom_header_and_background' );
+add_action( 'after_setup_theme', 'fepper_custom_header' );
 
 /**
  * Registers color schemes.
