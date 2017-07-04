@@ -14,20 +14,20 @@
 					setup_postdata( $post );
 			?>
 				<div class="block block-hero">
-	<a href="<?php the_permalink(); ?>" class="inner">
-		<?php
-			$post_thumbnail = get_the_post_thumbnail( $post, 'full' );
-			if ( $post_thumbnail ) :
-		?>
-			<div class="b-thumb">
-				<?php echo $post_thumbnail; ?>
-			</div>
-		<?php endif; ?>
-		<div class="b-text">
-			<h2 class="headline"><?php the_title(); ?></h2>
-		</div>
-	</a>
-</div>
+					<a href="<?php the_permalink(); ?>" class="inner">
+						<?php
+							$post_thumbnail = get_the_post_thumbnail( $post, 'full' );
+							if ( $post_thumbnail ) :
+						?>
+							<div class="b-thumb">
+								<?php echo $post_thumbnail; ?>
+							</div>
+						<?php endif; ?>
+						<div class="b-text">
+							<h2 class="headline"><?php the_title(); ?></h2>
+						</div>
+					</a>
+				</div>
 
 			<?php endforeach; ?>
 
@@ -43,20 +43,20 @@
 					setup_postdata( $post );
 			?>
 				<div class="block block-sub">
-	<a href="<?php the_permalink(); ?>" class="inner">
-		<?php
-			$post_thumbnail = get_the_post_thumbnail( $post, 'full' );
-			if ( $post_thumbnail ) :
-		?>
-			<div class="b-thumb">
-				<?php echo $post_thumbnail; ?>
-			</div>
-		<?php endif; ?>
-		<div class="b-text">
-			<h2 class="headline"><?php the_title(); ?></h2>
-		</div>
-	</a>
-</div>
+					<a href="<?php the_permalink(); ?>" class="inner">
+						<?php
+							$post_thumbnail = get_the_post_thumbnail( $post, 'full' );
+							if ( $post_thumbnail ) :
+						?>
+							<div class="b-thumb">
+								<?php echo $post_thumbnail; ?>
+							</div>
+						<?php endif; ?>
+						<div class="b-text">
+							<h2 class="headline"><?php the_title(); ?></h2>
+						</div>
+					</a>
+				</div>
 
 			<?php endforeach; ?>
 		</section>
@@ -92,21 +92,21 @@
 						?>
 							<li>
 								<div class="block block-hoagie">
-	<a href="<?php the_permalink(); ?>" class="b-inner cf">
-		<h2 class="headline"><?php the_title(); ?></h2>
-		<?php
-			$post_thumbnail = get_the_post_thumbnail( $post, 'medium' );
-			if ( $post_thumbnail ) :
-		?>
-			<div class="b-thumb">
-				<?php echo $post_thumbnail; ?>
-			</div>
-		<?php endif; ?>
-		<div class="b-text">
-			<?php the_excerpt(); ?>
-		</div>
-	</a>
-</div>
+									<a href="<?php the_permalink(); ?>" class="b-inner cf">
+										<h2 class="headline"><?php the_title(); ?></h2>
+										<?php
+											$post_thumbnail = get_the_post_thumbnail( $post, 'medium' );
+											if ( $post_thumbnail ) :
+										?>
+											<div class="b-thumb">
+												<?php echo $post_thumbnail; ?>
+											</div>
+										<?php endif; ?>
+										<div class="b-text">
+											<?php the_excerpt(); ?>
+										</div>
+									</a>
+								</div>
 
 							</li>
 						<?php

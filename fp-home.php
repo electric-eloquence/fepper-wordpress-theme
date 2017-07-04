@@ -4,9 +4,13 @@
 			$page_for_posts_id = get_option( 'page_for_posts' );
 			echo get_post_field( 'post_content', $page_for_posts_id );
 		?></h1>
-		<div class="l-one-col">
-		<div class="l-two-col">
-		<div class="l-main">
+		<?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
+			<div class="l-one-col">
+		<?php endif; ?>
+		<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+			<div class="l-two-col">
+		<?php endif; ?>
+			<div class="l-main">
 				<section class="section hoagies">
 					<ul class="post-list">
 						<?php
@@ -15,16 +19,16 @@
 						?>
 							<li>
 								<div class="block block-hoagie">
-	<a href="<?php the_permalink(); ?>" class="b-inner cf">
-		<h2 class="headline"><?php the_title(); ?></h2>
-		<div class="b-thumb">
-				<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
-			</div>
-		<div class="b-text">
-			<?php the_excerpt(); ?>
-		</div>
-	</a>
-</div>
+									<a href="<?php the_permalink(); ?>" class="b-inner cf">
+										<h2 class="headline"><?php the_title(); ?></h2>
+										<div class="b-thumb">
+												<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
+											</div>
+										<div class="b-text">
+											<?php the_excerpt(); ?>
+										</div>
+									</a>
+								</div>
 
 							</li>
 						<?php
@@ -35,9 +39,11 @@
 					</ul>
 				</section>
 				</div><!--end l-main-->
-			<div class="l-sidebar">
+			<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+				<div class="l-sidebar">
 					<?php dynamic_sidebar( 'sidebar-1' ); ?>
 				</div><!--end l-sidebar-->
-			</div>
+			<?php endif; ?>
+		</div>
 	</div><!--End role=main-->
 </div>
