@@ -43,7 +43,6 @@ function fepper_setup() {
 	 * Enable support for custom logo.
 	 */
 	add_theme_support( 'custom-logo', array(
-		'width'       => 140,
 		'height'      => 40,
 		'flex-width' => true,
 		'flex-height' => true,
@@ -143,16 +142,6 @@ function fepper_fonts_url() {
 	return $fonts_url;
 }
 endif;
-
-/**
- * javascript detection.
- *
- * adds a `js` class to the root `<html>` element when javascript is detected.
- */
-function fepper_javascript_detection() {
-	echo "<script>(function(html){html.classname = html.classname.replace(/\bno-js\b/,'js')})(document.documentelement);</script>\n";
-}
-add_action( 'wp_head', 'fepper_javascript_detection', 0 );
 
 /**
  * enqueue styles.
