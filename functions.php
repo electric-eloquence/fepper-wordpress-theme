@@ -183,7 +183,7 @@ function fepper_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'side sidebar 1', 'fepper' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'add widgets here to appear in your sidebar.', 'fepper' ),
+		'description'   => __( 'add widgets here to appear in your Front page and Blog Index page sidebars.', 'fepper' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widgettitle">',
@@ -192,7 +192,7 @@ function fepper_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'side sidebar 2', 'fepper' ),
 		'id'            => 'sidebar-2',
-		'description'   => __( 'add widgets here to appear in your sidebar.', 'fepper' ),
+		'description'   => __( 'add widgets here to appear in your Post pages sidebars.', 'fepper' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widgettitle">',
