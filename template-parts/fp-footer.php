@@ -1,11 +1,9 @@
 <!-- Begin Footer -->
 <footer class="footer" role="contentinfo">
 	<div class="footer-content">
-		<div class="site-title"><?php echo get_bloginfo(); ?></div>
+		<div class="site-title"><?php bloginfo( 'name' ); ?></div>
 		<?php
-			$locations = get_nav_menu_locations();
-			$theme_location = 'footer';
-			if ( isset( $locations[ $theme_location ] ) ) :
+			if ( has_nav_menu( 'primary' ) ) :
 				wp_nav_menu( array( 'menu_class' => 'menu-footer', 'theme_location' => 'footer' ) );
 			endif;
 		?>

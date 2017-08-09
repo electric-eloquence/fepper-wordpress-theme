@@ -6,7 +6,7 @@
 	?>
 		.header,
 		.header a {
-			color: #<?php echo $text_color; ?>;
+			color: #<?php esc_html_e($text_color); ?>;
 		}
 	<?php endif; ?>
 </style>
@@ -29,17 +29,7 @@
 				if ( is_front_page() ) :
 					echo '<h1 class="site-title">';
 				endif;
-				$custom_logo_id = get_theme_mod( 'custom_logo' );
-				$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-				$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
-				if ( empty( $image_alt ) ) :
-					$image_alt = get_bloginfo();
-				endif;
-		?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-					<img src="<?php echo $image[0]; ?>" alt="<?php echo $image_alt; ?>" />
-				</a>
-		<?php
+				echo the_custom_logo();
 				if ( is_front_page() ) :
 					echo '</h1>';
 				endif;
@@ -47,9 +37,9 @@
 				if ( display_header_text() ) :
 		?>
 					<h1 class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo(); ?></a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 					</h1>
-					<h2 class="site-description"><?php echo get_bloginfo( 'description' ); ?></h2>
+					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		<?php
 				endif;
 			endif;
