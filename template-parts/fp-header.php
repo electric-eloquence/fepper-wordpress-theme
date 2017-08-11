@@ -53,11 +53,7 @@
 		role="complementary"
 		<?php
 			echo 'style="background: url(';
-			if ( get_header_image() ) :
-				header_image();
-			else :
-				echo get_theme_root_uri() . '/fepper/_assets/src/landscape-16x9-mountains.jpg';
-			endif;
+			header_image();
 			echo ') center no-repeat; background-size: cover;"';
 		?>
 		>

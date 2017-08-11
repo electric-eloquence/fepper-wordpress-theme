@@ -218,7 +218,7 @@ figure {
 	padding: 0.8rem;
 }
 html {
-	background: #000;
+	background: #131313;
 	font-size: 62.5%;
 }
 body {
@@ -1158,7 +1158,7 @@ body.home .l-two-col {
 .footer {
 	clear: both;
 	overflow: hidden;
-	background: #131313;
+	background: #081810;
 	color: #fff;
 	line-height: 1.2;
 }
