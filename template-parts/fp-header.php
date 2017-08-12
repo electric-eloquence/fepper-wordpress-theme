@@ -6,7 +6,7 @@
 	?>
 		.header,
 		.header a {
-			color: #<?php esc_html_e($text_color); ?>;
+			color: #<?php esc_html_e( $text_color, 'fepper' ); ?>;
 		}
 	<?php endif; ?>
 </style>
