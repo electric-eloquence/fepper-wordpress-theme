@@ -29,7 +29,7 @@
 				if ( is_front_page() ) :
 					echo '<h1 class="site-title">';
 				endif;
-				echo the_custom_logo();
+				the_custom_logo();
 				if ( is_front_page() ) :
 					echo '</h1>';
 				endif;
