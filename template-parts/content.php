@@ -1,17 +1,12 @@
-<?php
-/**
- * The default template for displaying content
- *
- * Used for both single and index/archive/search.
- *
- * @package WordPress
- * @subpackage Fepper
- */
-?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header">
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="b-thumb">
+			<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
+		</div>
+	<?php endif; ?>
+
+	<header class="entry-header headline">
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
@@ -22,11 +17,10 @@
 				);
 			endif;
 		?>
-	</header><!-- .entry-header -->
+	</header>
 
-	<div class="entry-content">
+	<div class="entry-content b-text">
 		<?php
-			/* translators: %s: Name of current post */
 			the_content( sprintf(
 				__( 'Continue reading %s', 'fepper' ),
 				the_title( '<span class="screen-reader-text">', '</span>', false )
@@ -41,17 +35,16 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<?php
-		// Author bio.
 		if ( is_single() && get_the_author_meta( 'description' ) ) :
 			get_template_part( 'author-bio' );
 		endif;
 	?>
 
-	<footer class="entry-footer">
+	<footer class="entry-footer b-text">
 		<?php edit_post_link( __( 'Edit', 'fepper' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
+	</footer>
 
-</article><!-- #post-## -->
+</article>

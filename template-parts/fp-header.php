@@ -6,23 +6,11 @@
 	?>
 		.header,
 		.header a {
-			color: #<?php esc_html_e( $text_color, 'fepper' ); ?>;
+			color: #<?php echo esc_html( $text_color ); ?>;
 		}
 	<?php endif; ?>
 </style>
-<header class="header cf <?php
-	global $widgets;
-	$widgets = wp_get_sidebars_widgets();
-	if (
-		is_array( $widgets['sidebar'] ) &&
-		(
-			( count( $widgets['sidebar'] ) == 1 && strpos( $widgets['sidebar'][0], 'search' ) === 0 ) ||
-			count( $widgets['sidebar'] ) == 0
-		)
-	) :
-		echo 'header-no-image';
-	endif;
-?>" role="banner">
+<header class="header cf" role="banner">
 	<div class="site-branding">
 		<?php
 			if ( has_custom_logo() ) :
@@ -56,7 +44,7 @@
 			header_image();
 			echo ') center no-repeat; background-size: cover;"';
 		?>
-		>
+	>
 		<?php dynamic_sidebar( 'sidebar' ); ?>
 	</div><!-- .widget-area -->
 	<?php wp_nav_menu( array( 'menu_class' => 'nav', 'theme_location' => 'primary' ) ); ?>

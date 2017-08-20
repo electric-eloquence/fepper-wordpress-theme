@@ -11,54 +11,30 @@
 			<div class="l-two-col">
 		<?php endif; ?>
 			<div class="l-main">
-				<section class="section hoagies">
+				<section class="section hoagies <?php
+					$is_two_col = false;
+					while ( have_posts() ) :
+						if ( has_post_thumbnail() ) :
+							$is_two_col = true;
+							break;
+						endif;
+					endwhile;
+					rewind_posts();
+					if ( $is_two_col ) :
+						echo 'hoagies-two-col ';
+					endif;
+				?>">
 					<ul class="post-list">
-						<?php
-							global $hero_filter_default;
-							global $subs_filter_default;
-							global $widgets;
-							global $wp_registered_widgets;
-							$hoagies_filter_reverse = [];
-							if ( is_array( $widgets['hero'] ) && $widgets['hero'][0] ) :
-								$widget_hero = $wp_registered_widgets[$widgets['hero'][0]]['callback'][0];
-								$widget_hero_settings = $widget_hero->get_settings();
-								if ( is_array( $widget_hero_settings ) ) :
-									foreach ( $widget_hero_settings as $setting ) :
-										if ( is_array( $setting ) && $setting['category'] ) :
-											array_push( $hoagies_filter_reverse, get_cat_ID( $setting['category'] ) );
-										else:
-											array_push( $hoagies_filter_reverse, get_cat_ID( $hero_filter_default ) );
-										endif;
-									endforeach;
-								endif;
-							endif;
-							if ( is_array( $widgets['subs'] ) && $widgets['subs'][0] ) :
-								$widget_subs = $wp_registered_widgets[$widgets['subs'][0]]['callback'][0];
-								$widget_subs_settings = $widget_subs->get_settings();
-								if ( is_array( $widget_subs_settings ) ) :
-									foreach ( $widget_subs_settings as $setting ) :
-										if ( is_array( $setting ) && $setting['category'] ) :
-											array_push( $hoagies_filter_reverse, get_cat_ID( $setting['category'] ) );
-										else:
-											array_push( $hoagies_filter_reverse, get_cat_ID( $subs_filter_default ) );
-										endif;
-									endforeach;
-								endif;
-							endif;
-							$args = array(
-								'category__not_in' => $hoagies_filter_reverse,
-							);
-							query_posts( $args );
-							while ( have_posts() ) :
-								the_post();
-						?>
+						<?php while ( have_posts() ) : the_post(); ?>
 							<li>
 								<div class="block block-hoagie">
 									<a href="<?php the_permalink(); ?>" class="b-inner cf">
 										<h2 class="headline"><?php the_title(); ?></h2>
-										<div class="b-thumb">
+										<?php if ( has_post_thumbnail() ) : ?>
+											<div class="b-thumb">
 												<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
 											</div>
+										<?php endif; ?>
 										<div class="b-text">
 											<?php the_excerpt(); ?>
 										</div>

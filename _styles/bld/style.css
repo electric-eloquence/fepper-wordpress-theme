@@ -177,6 +177,7 @@ figure {
 }
 .cf:before,
 #widget-area aside:not(.widget_search):before,
+article[id^="post-"]:before,
 .comments .comment-body:before,
 .l-two-col:before,
 [role="main"]:before,
@@ -186,6 +187,7 @@ figure {
 .footer .menu-item-has-children:before,
 .cf:after,
 #widget-area aside:not(.widget_search):after,
+article[id^="post-"]:after,
 .comments .comment-body:after,
 .l-two-col:after,
 [role="main"]:after,
@@ -200,6 +202,7 @@ figure {
 }
 .cf:after,
 #widget-area aside:not(.widget_search):after,
+article[id^="post-"]:after,
 .comments .comment-body:after,
 .l-two-col:after,
 [role="main"]:after,
@@ -345,9 +348,6 @@ ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
-.post-list li {
-	margin-bottom: 1.6rem;
 }
 .text ul,
 .text ol,
@@ -525,47 +525,58 @@ object {
 		font-size: 1.8rem;
 	}
 }
+.post-list article[id^="post-"],
+.block-hoagie {
+	margin-bottom: 1.6rem;
+}
+article[id^="post-"],
 .block-hoagie {
 	display: table;
 	width: 100%;
 	border-collapse: collapse;
 }
+article[id^="post-"] .b-inner,
 .block-hoagie .b-inner {
 	display: table-row;
 	vertical-align: top;
 	overflow: hidden;
 }
+article[id^="post-"] .b-thumb,
 .block-hoagie .b-thumb {
 	float: left;
 }
-.block-hoagie .b-text {
-	float: right;
-}
 @media all and (max-width: 480px) {
+	article[id^="post-"] .b-thumb,
 	.block-hoagie .b-thumb {
 		max-width: 22.5rem;
 	}
 }
 @media all and (max-width: 767px) {
+	article[id^="post-"] .headline,
 	.block-hoagie .headline {
 		font-size: 1.8rem;
 	}
+	article[id^="post-"] .b-text p,
 	.block-hoagie .b-text p {
 		font-size: 1.4rem;
 	}
 }
 @media all and (min-width: 481px) {
-	.block-hoagie .headline {
+	.hoagies-two-col article[id^="post-"] .headline,
+	.hoagies-two-col .block-hoagie .headline {
 		float: right;
 		padding: 0 1.6rem;
 		width: 70%;
 	}
-	.block-hoagie .b-thumb {
+	.hoagies-two-col article[id^="post-"] .b-thumb,
+	.hoagies-two-col .block-hoagie .b-thumb {
 		width: 30%;
 	}
-	.block-hoagie .b-text {
-		width: 70%;
+	.hoagies-two-col article[id^="post-"] .b-text,
+	.hoagies-two-col .block-hoagie .b-text {
+		float: right;
 		padding: 0 1.6rem;
+		width: 70%;
 	}
 }
 form > div {
@@ -709,16 +720,19 @@ input[type="submit"].search-submit:hover {
 	margin-bottom: 0.8rem;
 }
 #widget-area aside {
+	margin-bottom: 3.2rem;
 	padding-right: 0.8rem;
 	padding-left: 0.8rem;
 }
 #widget-area aside:nth-child(2) {
 	clear: both;
-	padding-top: 1.6rem;
+	padding-top: 3.2rem;
 }
 #widget-area aside:last-child {
 	border-bottom: 1px solid #ddd;
-	padding-bottom: 1.6rem;
+	float: none;
+	margin-bottom: 0;
+	padding-bottom: 3.2rem;
 }
 .header #widget-area aside:last-child {
 	border-bottom: 0;
@@ -744,7 +758,7 @@ input[type="submit"].search-submit:hover {
 	#widget-area .widget_recent_entries,
 	#widget-area .widget_recent_comments {
 		float: left;
-		padding-top: 1.6rem;
+		padding-top: 3.2rem;
 		width: 50%;
 	}
 	#widget-area .widget_recent_entries ul li,
@@ -881,24 +895,20 @@ input[type="submit"].search-submit:hover {
 		margin-left: 2px;
 	}
 }
-.nav,
-.header div[class^="menu-"][class$="-container"] {
+.nav {
 	clear: both;
 	margin-top: -0.1rem;
 	overflow: hidden;
 }
-.nav ul,
-.header div[class^="menu-"][class$="-container"] ul {
+.nav ul {
 	background: rgba(255,255,255,0.95);
 }
-.header .nav a,
-.header .header div[class^="menu-"][class$="-container"] a {
+.header .nav a {
 	color: #333;
 	display: block;
 }
 @media all and (max-width: 767px) {
-	.nav,
-	.header div[class^="menu-"][class$="-container"] {
+	.nav {
 		max-height: 0;
 		position: absolute;
 		top: 5.1rem;
@@ -906,74 +916,57 @@ input[type="submit"].search-submit:hover {
 		width: 100%;
 		z-index: 1;
 	}
-	.nav li,
-	.header div[class^="menu-"][class$="-container"] li {
+	.nav li {
 		border-top: 1px solid #ddd;
 	}
-	.nav a,
-	.header div[class^="menu-"][class$="-container"] a {
+	.nav a {
 		display: table;
 		padding: 0.8rem 1.6rem;
 	}
 	.nav .children li,
-	.header div[class^="menu-"][class$="-container"] .children li,
-	.nav .sub-menu li,
-	.header div[class^="menu-"][class$="-container"] .sub-menu li {
+	.nav .sub-menu li {
 		padding-left: 2rem;
 	}
 }
 @media all and (min-width: 768px) {
-	.nav,
-	.header div[class^="menu-"][class$="-container"] {
-		border-top: 1px solid #ddd;
+	.nav {
 		clear: none;
 		float: left;
 		padding-top: 1.2rem;
 	}
-	.nav li,
-	.header div[class^="menu-"][class$="-container"] li {
+	.header-no-image .nav {
+		border-top: 1px solid #ddd;
+	}
+	.nav li {
 		float: left;
 	}
-	.nav a,
-	.header div[class^="menu-"][class$="-container"] a {
+	.nav a {
 		border: 0;
 		padding: 0.4rem 1.6rem;
 	}
 	.nav > ul > li > .children,
-	.header div[class^="menu-"][class$="-container"] > ul > li > .children,
-	.nav > ul > li > .sub-menu,
-	.header div[class^="menu-"][class$="-container"] > ul > li > .sub-menu {
+	.nav > ul > li > .sub-menu {
 		position: absolute;
 	}
 	.nav > ul > .page_item_has_children .page_item_has_children li,
-	.header div[class^="menu-"][class$="-container"] > ul > .page_item_has_children .page_item_has_children li,
-	.nav > ul > .menu-item-has-children .menu-item-has-children li,
-	.header div[class^="menu-"][class$="-container"] > ul > .menu-item-has-children .menu-item-has-children li {
+	.nav > ul > .menu-item-has-children .menu-item-has-children li {
 		padding-left: 0.8rem;
 	}
 	.nav .page_item_has_children > a::after,
-	.header div[class^="menu-"][class$="-container"] .page_item_has_children > a::after,
-	.nav .menu-item-has-children > a::after,
-	.header div[class^="menu-"][class$="-container"] .menu-item-has-children > a::after {
+	.nav .menu-item-has-children > a::after {
 		color: #808080;
 		content: "▼";
 		font-size: 0.75em;
 		margin-left: 0.8rem;
 	}
 	.nav .page_item_has_children:hover .children,
-	.header div[class^="menu-"][class$="-container"] .page_item_has_children:hover .children,
 	.nav .menu-item-has-children:hover .children,
-	.header div[class^="menu-"][class$="-container"] .menu-item-has-children:hover .children,
 	.nav .page_item_has_children:hover .sub-menu,
-	.header div[class^="menu-"][class$="-container"] .page_item_has_children:hover .sub-menu,
-	.nav .menu-item-has-children:hover .sub-menu,
-	.header div[class^="menu-"][class$="-container"] .menu-item-has-children:hover .sub-menu {
+	.nav .menu-item-has-children:hover .sub-menu {
 		max-height: 100%;
 	}
 	.nav .children,
-	.header div[class^="menu-"][class$="-container"] .children,
-	.nav .sub-menu,
-	.header div[class^="menu-"][class$="-container"] .sub-menu {
+	.nav .sub-menu {
 		max-height: 0;
 		overflow: hidden;
 		-webkit-transition: max-height 0.3s ease;
@@ -984,38 +977,26 @@ input[type="submit"].search-submit:hover {
 		z-index: 2;
 	}
 	.nav .children li,
-	.header div[class^="menu-"][class$="-container"] .children li,
-	.nav .sub-menu li,
-	.header div[class^="menu-"][class$="-container"] .sub-menu li {
+	.nav .sub-menu li {
 		border: 1px solid #eee;
 		border-bottom: 0;
 		float: none;
 		width: 100%;
 	}
 	.nav .children li:last-child,
-	.header div[class^="menu-"][class$="-container"] .children li:last-child,
-	.nav .sub-menu li:last-child,
-	.header div[class^="menu-"][class$="-container"] .sub-menu li:last-child {
+	.nav .sub-menu li:last-child {
 		border-bottom: 1px solid #eee;
 	}
 	.nav .children .children,
-	.header div[class^="menu-"][class$="-container"] .children .children,
 	.nav .sub-menu .children,
-	.header div[class^="menu-"][class$="-container"] .sub-menu .children,
 	.nav .children .sub-menu,
-	.header div[class^="menu-"][class$="-container"] .children .sub-menu,
-	.nav .sub-menu .sub-menu,
-	.header div[class^="menu-"][class$="-container"] .sub-menu .sub-menu {
+	.nav .sub-menu .sub-menu {
 		background: transparent;
 	}
 	.nav .children .children li,
-	.header div[class^="menu-"][class$="-container"] .children .children li,
 	.nav .sub-menu .children li,
-	.header div[class^="menu-"][class$="-container"] .sub-menu .children li,
 	.nav .children .sub-menu li,
-	.header div[class^="menu-"][class$="-container"] .children .sub-menu li,
-	.nav .sub-menu .sub-menu li,
-	.header div[class^="menu-"][class$="-container"] .sub-menu .sub-menu li {
+	.nav .sub-menu .sub-menu li {
 		border-right: 0;
 		border-bottom: 0;
 		border-left: 0;
@@ -1056,7 +1037,7 @@ input[type="submit"].search-submit:hover {
 .header {
 	background-color: #fff;
 	border-bottom: 1px solid #ddd;
-	margin: 0 0 1.6rem 0;
+	margin: 0 0 3.2rem 0;
 	max-width: none;
 	padding: 0;
 	width: 100%;
@@ -1098,10 +1079,6 @@ input[type="submit"].search-submit:hover {
 	}
 	.header .site-branding {
 		padding-left: calc((100% - 1152px + 1.6rem) / 2);
-	}
-	.header-no-image .nav,
-	.header-no-image .header div[class^="menu-"][class$="-container"] {
-		padding-left: 0;
 	}
 }
 .site-branding {

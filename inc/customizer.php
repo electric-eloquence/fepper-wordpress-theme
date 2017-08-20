@@ -4,8 +4,8 @@
  */
 function fepper_custom_header_and_background() {
 	$color_scheme             = fepper_get_color_scheme();
-	$default_background_color = trim( $color_scheme[1], '#' );
-	$default_text_color       = trim( $color_scheme[1], '#' );
+	$default_background_color = trim( $color_scheme[0], '#' );
+	$default_text_color       = trim( $color_scheme[0], '#' );
 
 	/**
 	 * Filter the arguments used when adding 'custom-background' support.
@@ -55,22 +55,13 @@ add_action( 'after_setup_theme', 'fepper_custom_header_and_background' );
 /**
  * Registers color schemes.
  *
- * Can be filtered with {@see 'fepper_color_schemes'}.
- *
- * The order of colors in a colors array:
- * 1. Main Background Color.
- * 2. Page Background Color.
- * 3. Link Color.
- * 4. Main Text Color.
- * 5. Secondary Text Color.
+ * Necessary for header text color and background color customization to work.
  *
  * @return array An associative array of color scheme options.
  */
 function fepper_get_color_schemes() {
 	/**
 	 * Filter the color schemes.
-	 *
-	 * The default schemes include 'default', 'dark', 'gray', 'red', and 'yellow'.
 	 *
 	 * @param array $schemes {
 	 *     Associative array of color schemes data.
@@ -80,8 +71,6 @@ function fepper_get_color_schemes() {
 	 *
 	 *         @type string $label  Color scheme label.
 	 *         @type array  $colors HEX codes for default colors prepended with a hash symbol ('#').
-	 *                              Colors are defined in the following order: Main background, page
-	 *                              background, link, main text, secondary text.
 	 *     }
 	 * }
 	 */
@@ -89,51 +78,7 @@ function fepper_get_color_schemes() {
 		'default' => array(
 			'label'  => __( 'Default', 'fepper' ),
 			'colors' => array(
-				'#1a1a1a',
 				'#ffffff',
-				'#007acc',
-				'#1a1a1a',
-				'#686868',
-			),
-		),
-		'dark' => array(
-			'label'  => __( 'Dark', 'fepper' ),
-			'colors' => array(
-				'#262626',
-				'#1a1a1a',
-				'#9adffd',
-				'#e5e5e5',
-				'#c1c1c1',
-			),
-		),
-		'gray' => array(
-			'label'  => __( 'Gray', 'fepper' ),
-			'colors' => array(
-				'#616a73',
-				'#4d545c',
-				'#c7c7c7',
-				'#f2f2f2',
-				'#f2f2f2',
-			),
-		),
-		'red' => array(
-			'label'  => __( 'Red', 'fepper' ),
-			'colors' => array(
-				'#ffffff',
-				'#ff675f',
-				'#640c1f',
-				'#402b30',
-				'#402b30',
-			),
-		),
-		'yellow' => array(
-			'label'  => __( 'Yellow', 'fepper' ),
-			'colors' => array(
-				'#3b3721',
-				'#ffef8e',
-				'#774e24',
-				'#3b3721',
-				'#5b4d3e',
 			),
 		),
 	) );
