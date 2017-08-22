@@ -3,13 +3,10 @@
 	<div class="footer-content">
 		<div class="site-title"><?php bloginfo( 'name' ); ?></div>
 		<?php
-			if ( has_nav_menu( 'primary' ) ) :
+			if ( has_nav_menu( 'footer' ) ) :
 				wp_nav_menu( array( 'menu_class' => 'menu-footer', 'theme_location' => 'footer' ) );
 			endif;
-		?>
-		<?php
-			$theme_location = 'social';
-			if ( isset( $locations[ $theme_location ] ) ) :
+			if ( has_nav_menu( 'social' ) ) :
 				wp_nav_menu( array( 'menu_class' => 'menu-social', 'theme_location' => 'social' ) );
 			endif;
 		?>

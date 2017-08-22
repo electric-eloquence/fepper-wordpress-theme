@@ -60,7 +60,7 @@
 			<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 				<div class="l-sidebar l-sidebar-1">
 					<?php dynamic_sidebar( 'sidebar-1' ); ?>
-					</div><!--end l-sidebar-->
+				</div><!--end l-sidebar-->
 			<?php endif; ?>
 		</div>
 	</div><!--End role=main-->

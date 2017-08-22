@@ -176,8 +176,9 @@ figure {
 	margin-right: 0.8rem;
 }
 .cf:before,
-#widget-area aside:not(.widget_search):before,
 article[id^="post-"]:before,
+.block-hoagie:before,
+#widget-area aside:not(.widget_search):before,
 .comments .comment-body:before,
 .l-two-col:before,
 [role="main"]:before,
@@ -186,8 +187,9 @@ article[id^="post-"]:before,
 .footer .page_item_has_children:before,
 .footer .menu-item-has-children:before,
 .cf:after,
-#widget-area aside:not(.widget_search):after,
 article[id^="post-"]:after,
+.block-hoagie:after,
+#widget-area aside:not(.widget_search):after,
 .comments .comment-body:after,
 .l-two-col:after,
 [role="main"]:after,
@@ -201,8 +203,9 @@ article[id^="post-"]:after,
 /* 2 */
 }
 .cf:after,
-#widget-area aside:not(.widget_search):after,
 article[id^="post-"]:after,
+.block-hoagie:after,
+#widget-area aside:not(.widget_search):after,
 .comments .comment-body:after,
 .l-two-col:after,
 [role="main"]:after,
@@ -531,14 +534,10 @@ object {
 }
 article[id^="post-"],
 .block-hoagie {
-	display: table;
 	width: 100%;
-	border-collapse: collapse;
 }
 article[id^="post-"] .b-inner,
 .block-hoagie .b-inner {
-	display: table-row;
-	vertical-align: top;
 	overflow: hidden;
 }
 article[id^="post-"] .b-thumb,
@@ -896,11 +895,11 @@ input[type="submit"].search-submit:hover {
 	}
 }
 .nav {
+	background: rgba(255,255,255,0.95);
 	clear: both;
-	margin-top: -0.1rem;
 	overflow: hidden;
 }
-.nav ul {
+.nav li {
 	background: rgba(255,255,255,0.95);
 }
 .header .nav a {
@@ -944,12 +943,12 @@ input[type="submit"].search-submit:hover {
 		border: 0;
 		padding: 0.4rem 1.6rem;
 	}
-	.nav > ul > li > .children,
-	.nav > ul > li > .sub-menu {
+	.nav > li > .children,
+	.nav > li > .sub-menu {
 		position: absolute;
 	}
-	.nav > ul > .page_item_has_children .page_item_has_children li,
-	.nav > ul > .menu-item-has-children .menu-item-has-children li {
+	.nav > .page_item_has_children .page_item_has_children li,
+	.nav > .menu-item-has-children .menu-item-has-children li {
 		padding-left: 0.8rem;
 	}
 	.nav .page_item_has_children > a::after,
@@ -1083,7 +1082,7 @@ input[type="submit"].search-submit:hover {
 }
 .site-branding {
 	float: left;
-	margin-top: 0.65rem;
+	padding-top: 0.65rem;
 }
 .site-branding h1,
 .site-branding h2 {
@@ -1091,6 +1090,14 @@ input[type="submit"].search-submit:hover {
 }
 .site-branding a {
 	display: block;
+}
+@media all and (min-width: 1025px) {
+	.site-title a {
+		margin-top: 4rem;
+	}
+	.site-title .custom-logo-link {
+		margin-top: 0;
+	}
 }
 .toggle-open {
 	max-height: 100% !important;

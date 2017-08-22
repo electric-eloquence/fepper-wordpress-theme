@@ -56,24 +56,6 @@ License URI: http://www.gnu.org/licenses/gpl.html
 License URI: https://creativecommons.org/licenses/by/4.0/
 Source: https://icomoon.io
 
-### Composite screenshot image
-Copyright: Alex Grichenko
-License: CC0 1.0 Universal (CC0 1.0)
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
-Source: http://www.publicdomainpictures.net/view-image.php?image=50301&picture=sunrise-in-mountains
-Copyright: Shaun Pierre
-License: CC0 1.0 Universal (CC0 1.0)
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
-Source: http://www.publicdomainpictures.net/view-image.php?image=40694&picture=blue-mountains
-Copyright: Public Domain Archive
-License: CC0 1.0 Universal (CC0 1.0)
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
-Source: http://publicdomainarchive.com/winter-mountain-glacier-grey-blue/
-Copyright: Alex Grichenko
-License: CC0 1.0 Universal (CC0 1.0)
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
-Source: http://www.publicdomainpictures.net/view-image.php?image=55734&picture=night-sky-in-mountains
-
 ### Default header image
 Copyright: Alex Grichenko
 License: CC0 1.0 Universal (CC0 1.0)

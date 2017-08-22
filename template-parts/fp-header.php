@@ -1,7 +1,7 @@
 <!-- Begin .header -->
 <style type="text/css">
 	<?php
-		$text_color = get_theme_support( 'custom-header', 'default-text-color' );
+		$text_color = get_theme_mod( 'header_textcolor', get_theme_support( 'custom-header', 'default-text-color' ) );
 		if ( $text_color ) :
 	?>
 		.header,

@@ -2,7 +2,7 @@
 	<div role="main">
 		<h1 class="section-title"><?php
 			$page_for_posts_id = get_option( 'page_for_posts' );
-			echo get_post_field( 'post_content', $page_for_posts_id );
+			echo get_post_field( 'post_title', $page_for_posts_id );
 		?></h1>
 		<?php if ( ! is_active_sidebar( 'sidebar-1' ) ) : ?>
 			<div class="l-one-col">
@@ -13,7 +13,7 @@
 			<div class="l-main">
 				<section class="section hoagies <?php
 					$is_two_col = false;
-					while ( have_posts() ) :
+					while ( have_posts() ) : the_post();
 						if ( has_post_thumbnail() ) :
 							$is_two_col = true;
 							break;
