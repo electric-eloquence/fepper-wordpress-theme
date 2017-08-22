@@ -1,11 +1,11 @@
 # Fepper
 
-Contributors: Electric Eloquence
-Requires at least: WordPress 4.5.9
-Version: 0.0.13
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: blog, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, one-column, right-sidebar, threaded-comments, two-columns
+* Contributors: Electric Eloquence
+* Requires at least: WordPress 4.5.9
+* Version: 0.0.13
+* License: GPLv2 or later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
+* Tags: blog, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, one-column, right-sidebar, threaded-comments, two-columns
 
 ## Description
 
@@ -35,6 +35,7 @@ reasonably working interface between these two very different platforms.
 ## Copyright
 
 Fepper WordPress Theme, Copyright 2017 - ∞ Electric Eloquence
+
 Fepper WordPress Theme is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
@@ -50,14 +51,16 @@ GNU General Public License for more details.
 ## Bundled third-party resources
 
 ### IcoMoon icons
-Copyright: Roonas
-License: GPL / CC BY 4
-License URI: http://www.gnu.org/licenses/gpl.html
-License URI: https://creativecommons.org/licenses/by/4.0/
-Source: https://icomoon.io
+
+* Copyright: Roonas
+* License: GPL / CC BY 4
+* License URI: http://www.gnu.org/licenses/gpl.html
+* License URI: https://creativecommons.org/licenses/by/4.0/
+* Source: https://icomoon.io
 
 ### Default header image
-Copyright: Alex Grichenko
-License: CC0 1.0 Universal (CC0 1.0)
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
-Source: http://www.publicdomainpictures.net/view-image.php?image=50301&picture=sunrise-in-mountains
+
+* Copyright: Alex Grichenko
+* License: CC0 1.0 Universal (CC0 1.0)
+* License URI: https://creativecommons.org/publicdomain/zero/1.0/
+* Source: http://www.publicdomainpictures.net/view-image.php?image=50301&picture=sunrise-in-mountains
