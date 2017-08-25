@@ -1,11 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php if ( has_post_thumbnail() ) : ?>
-		<div class="b-thumb">
-			<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
-		</div>
-	<?php endif; ?>
-
 	<header class="entry-header headline">
 		<?php
 			if ( is_single() ) :
@@ -18,6 +12,12 @@
 			endif;
 		?>
 	</header>
+
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="b-thumb">
+			<?php the_post_thumbnail( 'medium' ); ?>
+		</div>
+	<?php endif; ?>
 
 	<div class="entry-content b-text">
 		<?php

@@ -32,7 +32,7 @@
 										<h2 class="headline"><?php the_title(); ?></h2>
 										<?php if ( has_post_thumbnail() ) : ?>
 											<div class="b-thumb">
-												<?php echo get_the_post_thumbnail( $post, 'medium' ); ?>
+												<?php the_post_thumbnail( 'medium' ); ?>
 											</div>
 										<?php endif; ?>
 										<div class="b-text">

@@ -6,21 +6,6 @@
  * @subpackage Fepper
  */
 
-// Parse variables.styl for breakpoints. Create a global $breakpoints array and
-// add these values to it. Do this in the global scope so any and all functions
-// can access them.
-// Out of the box, they will be:
-// $breakpoints['bp_lg_max'] = -1;
-// $breakpoints['bp_md_max'] = 1024;
-// $breakpoints['bp_sm_max'] = 767;
-// $breakpoints['bp_xs_max'] = 480;
-// $breakpoints['bp_xx_max'] = 320;
-// $breakpoints['bp_xx_min'] = 0;
-$bp_ini = get_template_directory() . '/_scripts/src/variables.styl';
-if ( file_exists( $bp_ini ) ) {
-	$GLOBALS['breakpoints'] = parse_ini_file( $bp_ini );
-}
-
 if ( ! function_exists( 'fepper_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -75,10 +60,9 @@ function fepper_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	/*
-	 * This theme styles the visual editor to resemble the theme style,
-	 * specifically font, colors, icons, and column width.
+	 * Visual editor styles.
 	 */
-	add_editor_style( array( 'css/editor-style.css', fepper_fonts_url() ) );
+	add_editor_style( 'css/editor-style.css' );
 }
 endif; // fepper_setup
 add_action( 'after_setup_theme', 'fepper_setup' );
@@ -95,48 +79,6 @@ function fepper_content_width() {
 }
 add_action( 'after_setup_theme', 'fepper_content_width', 0 );
 
-if ( ! function_exists( 'fepper_fonts_url' ) ) :
-/**
- * register google fonts.
- *
- * create your own fepper_fonts_url() function to override in a child theme.
- *
- * @return string google fonts url for the theme.
- */
-function fepper_fonts_url() {
-	$fonts_url = '';
-	$fonts     = array();
-	$subsets   = 'latin,latin-ext';
-
-	// translators: if there are characters in your language that are not supported by merriweather, translate this to
-	// 'off'. do not translate into your own language.
-	if ( 'off' !== _x( 'on', 'merriweather font: on or off', 'fepper' ) ) {
-		$fonts[] = 'merriweather:400,700,900,400italic,700italic,900italic';
-	}
-
-	// translators: if there are characters in your language that are not supported by montserrat, translate this to
-	// 'off'. do not translate into your own language.
-	if ( 'off' !== _x( 'on', 'montserrat font: on or off', 'fepper' ) ) {
-		$fonts[] = 'montserrat:400,700';
-	}
-
-	// translators: if there are characters in your language that are not supported by inconsolata, translate this to
-	// 'off'. do not translate into your own language.
-	if ( 'off' !== _x( 'on', 'inconsolata font: on or off', 'fepper' ) ) {
-		$fonts[] = 'inconsolata:400';
-	}
-
-	if ( $fonts ) {
-		$fonts_url = add_query_arg( array(
-			'family' => urlencode( implode( '|', $fonts ) ),
-			'subset' => urlencode( $subsets ),
-		), 'https://fonts.googleapis.com/css' );
-	}
-
-	return $fonts_url;
-}
-endif;
-
 /**
  * enqueue styles.
  */
@@ -150,20 +92,6 @@ function fepper_styles() {
  */
 function fepper_scripts() {
 	// load our javascripts.
-	wp_enqueue_script(
-		'fepper-variables',
-		get_template_directory_uri() . '/_scripts/src/variables.styl',
-		array(),
-		false,
-		true
-	);
-	wp_enqueue_script(
-		'fepper-fepper-obj',
-		get_template_directory_uri() . '/_scripts/src/fepper-obj.js',
-		array(),
-		false,
-		true
-	);
 	wp_enqueue_script(
 		'fepper-functions',
 		get_template_directory_uri() . '/_scripts/src/functions.js',

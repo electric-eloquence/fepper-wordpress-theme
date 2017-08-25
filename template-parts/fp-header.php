@@ -37,7 +37,7 @@
 	<a href="#" class="nav-toggle nav-toggle-menu icon-menu"></a>
 	<div
 		id="widget-area"
-		class="widget-area"
+		class="widget-area cf"
 		role="complementary"
 		<?php
 			echo 'style="background: url(';
