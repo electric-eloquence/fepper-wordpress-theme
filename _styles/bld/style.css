@@ -911,7 +911,7 @@ input[type="submit"].search-submit:hover {
 	.nav {
 		max-height: 0;
 		position: absolute;
-		top: 5.1rem;
+		top: 5rem;
 		left: 0;
 		width: 100%;
 		z-index: 1;
@@ -1047,11 +1047,9 @@ input[type="submit"].search-submit:hover {
 	float: left;
 	padding: 0.65rem 0 0.65rem 0.8rem;
 }
+.site-branding h1,
 .site-branding h2 {
 	display: table;
-}
-.site-branding a {
-	display: block;
 }
 .nav-toggle {
 	border-bottom: 1px solid #ddd;
@@ -1067,6 +1065,11 @@ input[type="submit"].search-submit:hover {
 }
 .toggle-open {
 	max-height: 100vh !important;
+}
+@media all and (max-width: 767px) {
+	.site-branding {
+		max-width: calc(100% - (2 * 5.1rem));
+	}
 }
 @media all and (min-width: 768px) {
 	.nav-toggle {
