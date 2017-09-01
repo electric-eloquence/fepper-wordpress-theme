@@ -1388,8 +1388,14 @@ a img.aligncenter {
 	text-decoration: underline;
 }
 @media screen and (max-width: 600px) {
-	#wpadminbar {
-		position: fixed;
+	.admin-bar {
+		margin-top: -46px;
+		padding-top: 46px;
+	}
+	.admin-bar .nav-toggle,
+	.admin-bar .search-form,
+	.admin-bar .nav {
+		position: absolute;
 	}
 }
 @media all and (max-width: 767px) {
