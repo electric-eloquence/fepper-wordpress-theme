@@ -1,8 +1,8 @@
 # Fepper
 
 * Contributors: Electric Eloquence
-* Requires at least: WordPress 4.5.9
-* Version: 0.0.14
+* Requires at least: WordPress 4.5
+* Version: 0.0.15
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Tags: blog, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, one-column, right-sidebar, threaded-comments, two-columns

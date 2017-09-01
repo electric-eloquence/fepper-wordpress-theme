@@ -10,30 +10,37 @@
 		}
 	<?php endif; ?>
 </style>
-<header class="header cf" role="banner">
+<?php
+	$widgets = wp_get_sidebars_widgets();
+	$has_search = false;
+	foreach ( $widgets['sidebar'] as $widget ) :
+		if ( strpos( $widget, 'search' ) === 0 ) :
+			$has_search = true;
+			break;
+		endif;
+	endforeach;
+?>
+<header class="header cf <?php if ( $has_search ) { echo 'has-search'; } ?>" role="banner">
 	<div class="site-branding">
-		<?php
-			if ( has_custom_logo() ) :
-				if ( is_front_page() ) :
-					echo '<h1 class="site-title">';
-				endif;
-				the_custom_logo();
-				if ( is_front_page() ) :
-					echo '</h1>';
-				endif;
-			else :
-				if ( display_header_text() ) :
-		?>
-					<h1 class="site-title">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-					</h1>
-					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		<?php
-				endif;
+		<?php if ( has_custom_logo() ) :
+			if ( is_front_page() ) :
+				echo '<h1 class="site-title">';
 			endif;
-		?>
+			the_custom_logo();
+			if ( is_front_page() ) :
+				echo '</h1>';
+			endif; ?>
+		<?php endif; ?>
+		<?php if ( display_header_text() ) : ?>
+			<h1 class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+			</h1>
+			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+		<?php endif; ?>
 	</div>
-	<a href="#" class="nav-toggle nav-toggle-search icon-search"></a>
+	<?php if ( $has_search ) : ?>
+		<a href="#" class="nav-toggle nav-toggle-search icon-search"></a>
+	<?php endif; ?>
 	<a href="#" class="nav-toggle nav-toggle-menu icon-menu"></a>
 	<div
 		id="widget-area"
@@ -42,7 +49,7 @@
 		<?php
 			echo 'style="background: url(';
 			header_image();
-			echo ') center no-repeat; background-size: cover;"';
+			echo ') center no-repeat; background-attachment: fixed; background-size: cover;"';
 		?>
 	>
 		<?php dynamic_sidebar( 'sidebar' ); ?>
