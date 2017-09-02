@@ -15,11 +15,14 @@
 			$( toggled ).toggleClass( 'toggle-open' );
 
 			if ( toggler === '.nav-toggle-search' ) {
-				$( '.search-field' ).focus();
+				$( '.header .search-field' ).focus();
 
 			} else if ( toggler === '.nav-toggle-menu' ) {
-				var $headerLinks = $( '.header a' );
+				var $header = $( '.header' );
+				var $headerLinks = $header.find( 'a' );
 				var indexOf1stNavLink;
+
+				$header.toggleClass( 'menu-open' );
 
 				// Not using jQuery .each() because we don't want to determine indexOf1stNavLink within a callback.
 				for ( var i = 0; i < $headerLinks.length; i++ ) {
@@ -31,6 +34,8 @@
 
 				// Focus on the header link previous to 1st nav link, so when users tab, they highlight 1st nav link.
 				$( $headerLinks[indexOf1stNavLink - 1] ).focus();
+				// Scroll back to top of page to offset the scrolling caused by the focus.
+				$( window ).scrollTop( 0 );
 				// Blur the focus so the styling side-effects of the focus aren't apparent.
 				$( $headerLinks[indexOf1stNavLink - 1] ).blur();
 			}
@@ -55,17 +60,8 @@
 			var $widgets = $( '#widget-area' );
 			var widgetsRect = $widgets[0].getBoundingClientRect();
 
-			if ( window.innerWidth <= BP_SM_MAX ) {
-				if ( widgetsRect.bottom < 25 ) { // Half the height of the nav-toggle.
-					if ( ! $header.hasClass( 'icons-dark' ) ) {
-						$header.addClass( 'icons-dark' );
-					}
-				} else {
-					if ( $header.hasClass( 'icons-dark' ) ) {
-						$header.removeClass( 'icons-dark' );
-					}
-				}
-			} else {
+			// Only for larger viewports.
+			if ( window.innerWidth > BP_SM_MAX ) {
 				if ( widgetsRect.bottom < 0 ) {
 					if ( ! $nav.hasClass( 'fixed' ) ) {
 						$nav.addClass( 'fixed' );
@@ -80,8 +76,8 @@
 			}
 		} );
 
-		mobileNavToggle( '.nav-toggle-search', '.search-form' );
-		mobileNavToggle( '.nav-toggle-menu', '.nav' );
+		mobileNavToggle( '.nav-toggle-search', '.header .search-form' );
+		mobileNavToggle( '.nav-toggle-menu', '.header div.nav, .header div[class^="menu-"]' );
 	} );
 
 } )( jQuery );

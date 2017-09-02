@@ -20,7 +20,7 @@
 		endif;
 	endforeach;
 ?>
-<header class="header cf <?php if ( $has_search ) { echo 'has-search'; } ?>" role="banner">
+<header class="header cf" role="banner">
 	<div class="site-branding">
 		<?php if ( has_custom_logo() ) :
 			if ( is_front_page() ) :
@@ -28,15 +28,20 @@
 			endif;
 			the_custom_logo();
 			if ( is_front_page() ) :
-				echo '</h1>';
-			endif; ?>
-		<?php endif; ?>
-		<?php if ( display_header_text() ) : ?>
+				echo '</h1>'; ?>
+		<?php
+			endif;
+		endif; ?>
+		<?php if ( ! has_custom_logo() ) :
+			if ( display_header_text() ) :
+		?>
 			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 			</h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		<?php endif; ?>
+		<?php
+			endif;
+		endif; ?>
 	</div>
 	<?php if ( $has_search ) : ?>
 		<a href="#" class="nav-toggle nav-toggle-search icon-search"></a>
