@@ -12,7 +12,7 @@
 
 get_header(); ?>
 
-	<main id="main" class="site-main" role="main">
+	<main id="main" role="main">
 
 	<?php
 	// Start the loop.
@@ -30,6 +30,6 @@ get_header(); ?>
 	endwhile;
 	?>
 
-	</main><!-- .site-main -->
+	</main>
 
 <?php get_footer(); ?>

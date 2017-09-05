@@ -7,7 +7,7 @@
  */
 ?>
 
-<main id="main" class="site-main" role="main">
+<main id="main" role="main">
 
 	<?php if ( is_search() ) : ?>
 		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'fepper' ), get_search_query() ); ?></h1>
@@ -60,4 +60,4 @@
 		endif;
 	?>
 
-</main><!-- .site-main -->
+</main>

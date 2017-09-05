@@ -1,7 +1,6 @@
 <section class="comments section">
-	<div class="comments-container">
-		<?php if ( have_comments() ) : ?>
-			<h2 class="section-title"><?php
+	<?php if ( have_comments() ) : ?>
+		<h2 class="section-title"><?php
 				$comments_number = get_comments_number();
 				printf(
 					_nx(
@@ -15,19 +14,19 @@
 					get_the_title()
 				);
 			?></h2>
-			<?php the_comments_navigation(); ?>
-			<ul class="comment-list">
-				<?php
-					wp_list_comments( array(
+		<?php the_comments_navigation(); ?>
+		<ul class="comment-list">
+			<?php
+				wp_list_comments( array(
 					'style'       => 'ul',
 					'short_ping'  => true,
 					'avatar_size' => 102,
 				) );
-				?>
-			</ul>
-			<?php the_comments_navigation(); ?>
-		<?php endif; ?>
-		<?php
+			?>
+		</ul>
+		<?php the_comments_navigation(); ?>
+	<?php endif; ?>
+	<?php
 			// If comments are closed and there are comments, let's leave a little note, shall we?
 			if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 		?>
@@ -35,6 +34,5 @@
 		<?php else: ?>
 			<?php comment_form(); ?>
 		<?php endif; ?>
-	</div>
 </section>
 

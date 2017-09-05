@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-	<main id="main" class="site-main" role="main">
+	<main id="main" role="main">
 
 		<section class="error-404 not-found">
 			<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'fepper' ); ?></h1>
@@ -23,6 +23,6 @@ get_header(); ?>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
-	</main><!-- .site-main -->
+	</main>
 
 <?php get_footer(); ?>

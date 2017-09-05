@@ -11,6 +11,8 @@
 	<?php endif; ?>
 </style>
 <?php
+	$has_custom_logo = has_custom_logo();
+	$is_front_page = is_front_page();
 	$widgets = wp_get_sidebars_widgets();
 	$has_search = false;
 	foreach ( $widgets['sidebar'] as $widget ) :
@@ -22,17 +24,17 @@
 ?>
 <header class="header cf" role="banner">
 	<div class="site-branding">
-		<?php if ( has_custom_logo() ) :
-			if ( is_front_page() ) :
+		<?php if ( $has_custom_logo ) :
+			if ( $is_front_page ) :
 				echo '<h1 class="site-title">';
 			endif;
 			the_custom_logo();
-			if ( is_front_page() ) :
+			if ( $is_front_page ) :
 				echo '</h1>'; ?>
 		<?php
 			endif;
 		endif; ?>
-		<?php if ( ! has_custom_logo() ) :
+		<?php if ( ! $has_custom_logo ) :
 			if ( display_header_text() ) :
 		?>
 			<h1 class="site-title">
