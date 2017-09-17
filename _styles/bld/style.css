@@ -408,10 +408,6 @@ object {
 		width: calc(50% - 0.4rem);
 	}
 }
-.post-list article[id^="post-"],
-.block-hoagie {
-	margin-bottom: 1.6rem;
-}
 article[id^="post-"],
 .block-hoagie {
 	width: 100%;
@@ -448,18 +444,22 @@ article[id^="post-"] .b-thumb,
 	.hoagies-two-col .block-hoagie .headline {
 		float: right;
 		padding: 0 1.6rem;
-		width: 70%;
+		width: 66.66666666666667%;
 	}
 	.hoagies-two-col article[id^="post-"] .b-thumb,
 	.hoagies-two-col .block-hoagie .b-thumb {
-		width: 30%;
+		width: 33.333333333333336%;
 	}
 	.hoagies-two-col article[id^="post-"] .b-text,
 	.hoagies-two-col .block-hoagie .b-text {
 		float: right;
 		padding: 0 1.6rem;
-		width: 70%;
+		width: 66.66666666666667%;
 	}
+}
+.post-list article[id^="post-"],
+.block-hoagie {
+	margin-bottom: 1.6rem;
 }
 .hoagies-two-col {
 	margin-bottom: 0;
@@ -1039,12 +1039,12 @@ input[type="submit"].search-submit:hover {
 @media all and (min-width: 768px) {
 	.l-two-col .l-main {
 		float: left;
-		width: 70%;
+		width: 66.66666666666667%;
 		padding-right: 1.6rem;
 	}
 	.l-two-col .l-sidebar {
 		float: left;
-		width: 30%;
+		width: 33.333333333333336%;
 		padding: 0 0 0 1.6rem;
 	}
 }
@@ -1143,7 +1143,7 @@ a img.aligncenter {
 .wp-caption {
 	background: #fff;
 	border: 1px solid #f0f0f0;
-	max-width: 96% /* Image does not overflow the content area */;
+	max-width: 96%;
 	padding: 5px 3px 10px;
 	text-align: center;
 }
@@ -1187,14 +1187,14 @@ a img.aligncenter {
 	text-decoration: none;
 	top: 5px;
 	width: auto;
-	z-index: 100000 /* Above WP toolbar. */;
+	z-index: 100000;
 }
 .gallery {
-	margin: 0 -1.1666667% 1.75em;
+	margin: 0 -1.166666666666667% 1.75em;
 }
 .gallery-item {
 	display: inline-block;
-	max-width: 33.33%;
+	max-width: 33.333333333333336%;
 	padding: 0 1.15% 2.25%;
 	text-align: center;
 	vertical-align: top;
@@ -1206,6 +1206,9 @@ a img.aligncenter {
 .gallery-columns-2 .gallery-item {
 	max-width: 50%;
 }
+.gallery-columns-3 .gallery-item {
+	max-width: 33.333333333333336%;
+}
 .gallery-columns-4 .gallery-item {
 	max-width: 25%;
 }
@@ -1213,16 +1216,16 @@ a img.aligncenter {
 	max-width: 20%;
 }
 .gallery-columns-6 .gallery-item {
-	max-width: 16.66%;
+	max-width: 16.666666666666668%;
 }
 .gallery-columns-7 .gallery-item {
-	max-width: 14.28%;
+	max-width: 14.285714285714286%;
 }
 .gallery-columns-8 .gallery-item {
 	max-width: 12.5%;
 }
 .gallery-columns-9 .gallery-item {
-	max-width: 11.11%;
+	max-width: 11.11111111111111%;
 }
 .gallery-icon img {
 	margin: 0 auto;
