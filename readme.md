@@ -38,6 +38,10 @@ https://github.com/electric-eloquence/fepper-wordpress/issues
 
 ## Changelog
 
+#### 0.1.6
+
+* Better font support in Linux
+
 #### 0.1.5
 
 * Better image rendering in MS Edge
