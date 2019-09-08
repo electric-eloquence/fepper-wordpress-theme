@@ -24,10 +24,10 @@ reasonably working interface between these two very different platforms.
   theme. See https://codex.wordpress.org/Using_Themes#Adding_New_Themes 
   for further information.
 * However, it is highly recommended to use this theme with a complete 
-  [Fepper prototyper](https://github.com/electric-eloquence/fepper-wordpress/releases/latest).
+  [Fepper frontend prototyper](https://github.com/electric-eloquence/fepper-wordpress/releases/latest).
 * With that being known, it should also be known that this theme is included 
   within a fully configured WordPress backend in the 
-  [Fepper for WordPress project](https://github.com/electric-eloquence/fepper-wordpress#readme).
+  [Fepper frontend prototyper for WordPress](https://github.com/electric-eloquence/fepper-wordpress#readme).
 * This theme is unopinionated with regards to styles and markup and should be 
   used as a parent theme. You are encouraged to override any or all aspects of 
   this theme for your custom needs.
@@ -39,7 +39,7 @@ https://github.com/electric-eloquence/fepper-wordpress/issues
 ## Changelog
 
 #### 0.1.7
-* Minor link update in doc
+* Minor documentation updates
 
 #### 0.1.6
 * Better font support in Linux
