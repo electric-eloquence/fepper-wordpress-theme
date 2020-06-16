@@ -6,18 +6,63 @@
 
 ( function( $ ) {
 
-	function mobileNavToggle( toggler, toggled ) {
-		var $toggler = $( toggler );
+	var $togglerSearch;
+	var $togglerMenu;
+	var $navSearch;
+	var $navMenu;
 
-		if ( !$toggler.length ) {
+	// Create hidden links enabling tabbed focusing of mobile nav links when clicking mobile nav toggle.
+	// An edgy case but still desirable for accessibility.
+	var $hiddenLinkSearch = $( '<a href="#" class="hidden-link visually-hidden"></a>' );
+	var $hiddenLinkMenu = $( '<a href="#" class="hidden-link visually-hidden"></a>' );
+
+	$hiddenLinkSearch.focus( function () {
+		if ( ! $togglerSearch.hasClass( 'focused' ) ) {
+			$togglerSearch.addClass( 'focused' );
+		}
+	} );
+
+	$hiddenLinkMenu.focus( function () {
+		if ( ! $togglerMenu.hasClass( 'focused' ) ) {
+			$togglerMenu.addClass( 'focused' );
+		}
+	} );
+
+	$hiddenLinkSearch.keydown( function ( e ) {
+		if ( e.keyCode === 13 ) { // If the Enter key is hit.
+			$togglerSearch.click();
+		}
+	} );
+
+	$hiddenLinkMenu.keydown( function ( e ) {
+		if ( e.keyCode === 13 ) { // If the Enter key is hit.
+			$togglerMenu.click();
+		}
+	} );
+
+	$hiddenLinkSearch.blur( function () {
+		$togglerSearch.removeClass( 'focused' );
+	} );
+
+	$hiddenLinkMenu.blur( function () {
+		$togglerMenu.removeClass( 'focused' );
+	} );
+
+	function mobileNavToggle( $toggler, $toggled ) {
+		if ( ! $toggler.length || ! $toggled.length ) {
 			return;
 		}
 
-		var $toggled = $( toggled );
+		var $hiddenLink = $toggled.find( '.hidden-link' );
 
-		if ( !$toggled.length ) {
-			$toggler.hide();
-			return;
+		if ( ! $hiddenLink.length ) {
+			if ( $toggler.hasClass( 'nav-toggle-search' ) ) {
+				$hiddenLinkSearch.prependTo( $toggled );
+			} else if ( $toggler.hasClass( 'nav-toggle-menu' ) ) {
+				$hiddenLinkMenu.prependTo( $toggled );
+			}
+
+			$hiddenLink = $toggled.find( '.hidden-link' );
 		}
 
 		$toggler.click( function( e ) {
@@ -25,99 +70,88 @@
 
 			$toggled.toggleClass( 'toggle-open' );
 
-			if ( toggler === '.nav-toggle-search' ) {
-				$( '.header .search-field' ).focus();
+			if ( $toggled.hasClass( 'toggle-open' ) ) {
+				var cssTop = 'calc(' + $( 'body' ).css( 'padding-top' ) + ' + ' + $toggler.outerHeight() + 'px)';
 
-			} else if ( toggler === '.nav-toggle-menu' ) {
-				var $header = $( '.header' );
+				$toggled.css( 'top', cssTop );
 
-				if ( !$header.length ) {
-					return;
-				}
-
-				var $headerLinks = $header.find( 'a' );
-
-				if ( !$headerLinks.length ) {
-					return;
-				}
-
-				var indexOf1stNavLink;
-
-				$header.toggleClass( 'menu-open' );
-
-				// Not using jQuery .each() because we don't want to determine indexOf1stNavLink within a callback.
-				for ( var i = 0; i < $headerLinks.length; i++ ) {
-					if ( $( $headerLinks[i] ).closest( '.nav' ).length ) {
-						indexOf1stNavLink = i;
-						break;
-					}
-				}
-
-				// Focus on the header link previous to 1st nav link, so when users tab, they highlight 1st nav link.
-				$( $headerLinks[indexOf1stNavLink - 1] ).focus();
-				// Scroll back to top of page to offset the scrolling caused by the focus.
-				$( window ).scrollTop( 0 );
-				// Blur the focus so the styling side-effects of the focus aren't apparent.
-				$( $headerLinks[indexOf1stNavLink - 1] ).blur();
+				// Focus on hidden link, now previous to 1st nav link, so when users tab, they highlight 1st nav link.
+				$hiddenLink.focus();
 			}
-		});
+		} );
 	}
 
 	$( document ).ready( function() {
-		var BP_SM_MAX = 767;
+		function resetFooterHeight() {
+			var $body = $( 'body' );
+			var $footer = $( 'footer[role="contentinfo"]' );
+			var footerHeight = $footer.length ? $footer.outerHeight() + 'px' : '';
 
-		// When the nav menu is scrolled to the top of the page, fix it to the top.
-		$( window ).scroll( function() {
-			var $header = $( '.header' );
+			$footer.css( 'height', 'auto' );
 
-			if ( !$header.length ) {
-				return;
-			}
+			if ( $body.hasClass( 'admin-bar' ) ) {
+				var htmlMarginTop = $( 'html' ).css( 'margin-top' );
+				var offsetHeight = $body.css( 'top' );
 
-			var $main = $( '#main' );
-
-			if ( !$main.length ) {
-				return;
-			}
-
-			var mainHeight = $main.height();
-			var mainInnerHeight = $main.innerHeight();
-			var mainPaddingTop = mainInnerHeight - mainHeight;
-
-			var $nav = $( '#widget-area + div.nav, #widget-area + div[class^="menu-"]' );
-
-			if ( !$nav.length ) {
-				return;
-			}
-
-			var navOuterHeight = $nav.outerHeight();
-
-			var $widgets = $( '#widget-area' );
-
-			if ( !$widgets.length ) {
-				return;
-			}
-
-			var widgetsRect = $widgets[0].getBoundingClientRect();
-
-			// Only for larger viewports.
-			if ( window.innerWidth > BP_SM_MAX ) {
-				if ( widgetsRect.bottom < 0 ) {
-					if ( ! $nav.hasClass( 'fixed' ) ) {
-						$nav.addClass( 'fixed' );
-						$main.css( 'padding-top', ( mainPaddingTop + navOuterHeight ) + 'px' );
-					}
+				if ( parseInt( htmlMarginTop, 10 ) ) {
+					$body.css( 'min-height', 'calc(100vh - ' + htmlMarginTop + ')' );
 				} else {
-					if ( $nav.hasClass( 'fixed' ) ) {
-						$nav.removeClass( 'fixed' );
-						$( '#main' ).css( 'padding-top', '' );
-					}
+					$body.css( 'min-height', '' );
 				}
+
+				if ( parseInt( offsetHeight, 10 ) ) {
+					$body.css( 'padding-bottom', '' );
+					$footer.css( 'bottom', offsetHeight );
+				} else {
+					$body.css( 'padding-bottom', footerHeight );
+					$footer.css( 'bottom', '' );
+				}
+			} else {
+				$body.css( 'min-height', '' );
+				$body.css( 'padding-bottom', footerHeight );
+				$footer.css( 'bottom', '' );
 			}
+		}
+
+		var $headerContainer = $( '.header-container' );
+		var $widgetArea = $( '#widget-area' );
+		var headerBgImg = $widgetArea.css( 'background-image' );
+
+		if ( headerBgImg ) {
+			$headerContainer.css( 'background', headerBgImg + ' 0 0 / cover no-repeat fixed' );
+			$widgetArea.css( 'background-image', '' );
+		}
+
+		resetFooterHeight();
+
+		$togglerSearch = $( '.nav-toggle-search' );
+		$togglerMenu = $( '.nav-toggle-menu' );
+
+		$navSearch = $( '#header .search-form' );
+		$navMenu = $( '#header div.nav, #header div[class^="menu-"]' );
+
+		mobileNavToggle( $togglerSearch, $navSearch );
+		mobileNavToggle( $togglerMenu, $navMenu );
+
+		$( window ).resize( function() {
+			if ( $navSearch.length && $navSearch.hasClass( 'toggle-open' ) ) {
+				$navSearch.removeClass( 'toggle-open' );
+				$navSearch.css( 'top', '' );
+				$togglerSearch.removeClass( 'focused' );
+			}
+
+			if ( $navMenu.length && $navMenu.hasClass( 'toggle-open' ) ) {
+				$navMenu.removeClass( 'toggle-open' );
+				$navMenu.css( 'top', '' );
+				$togglerMenu.removeClass( 'focused' );
+			}
+
+			resetFooterHeight();
 		} );
 
-		mobileNavToggle( '.nav-toggle-search', '.header .search-form' );
-		mobileNavToggle( '.nav-toggle-menu', '.header div.nav, .header div[class^="menu-"]' );
+		// On wider mobile viewports (phablets and tablets), touching ".expanded" links will expand nested menus.
+		// The following listener removes the focus from those links, thereby closing their expanded menus.
+		$( 'body' ).click( function () {} );
 	} );
 
 } )( jQuery );
