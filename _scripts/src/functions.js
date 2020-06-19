@@ -71,12 +71,15 @@
 			$toggled.toggleClass( 'toggle-open' );
 
 			if ( $toggled.hasClass( 'toggle-open' ) ) {
-				var cssTop = 'calc(' + $( 'body' ).css( 'padding-top' ) + ' + ' + $toggler.outerHeight() + 'px)';
+				var cssTop = 'calc(' + $( 'body' ).css( 'padding-top' ) + ' + ' +
+					( $( '.nav-toggle' ).last().position().top + $toggler.outerHeight() ) + 'px)';
 
 				$toggled.css( 'top', cssTop );
 
 				// Focus on hidden link, now previous to 1st nav link, so when users tab, they highlight 1st nav link.
 				$hiddenLink.focus();
+			} else {
+				$toggled.css( 'top', '' );
 			}
 		} );
 	}
